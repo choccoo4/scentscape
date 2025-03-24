@@ -15,4 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('home');
+
+Route::get('/register', function () {
+    return view('register');
 });
+
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\HomeController;
+
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', function () {
+    return view('about'); // Pastikan ada file resources/views/about.blade.php
+})->name('about');
