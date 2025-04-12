@@ -4,9 +4,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListBarangController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ShopController;
 
 Route::get('/welcome', function () {
     return view('welcome');
+});
+
+Route::get('/register', function () {
+    return view('register');
 });
 
 Route::get('/user/{id}', function ($id) {
@@ -38,3 +43,9 @@ Route::view('/about', 'about');
 Route::get('/contact', function () {
     return view('contact');
 });
+
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', function () {
+    return view('about'); // Pastikan ada file resources/views/about.blade.php
+})->name('about');
